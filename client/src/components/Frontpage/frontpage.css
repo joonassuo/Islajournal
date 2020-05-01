@@ -1,3 +1,24 @@
-h2 {
+.frontpage {
+	width: 100vw;
+	height: 100vh;
+}
+
+.title-container,
+#title {
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.title-container {
+	position: relative;
+	height: 50vh;
+	width: 60vw;
+	border: 1px solid rgb(0, 0, 0);
+}
+
+#title {
+	position: absolute;
 	color: red;
+	font-size: 3em;
 }

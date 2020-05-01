@@ -1,10 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import "./frontpage.css";
+import { Redirect } from "react-router-dom";
 
 const Frontpage = () => {
-	return (
+	const [isClicked, setIsclicked] = useState(false);
+
+	return isClicked ? (
+		<Redirect to="/main" />
+	) : (
 		<div>
-			<h2>Lorem Ipsum</h2>
+			<div className="frontpage">
+				<div
+					className="title-container"
+					onClick={() => setIsclicked(true)}
+				>
+					<div id="title">ISLA Journal</div>
+				</div>
+			</div>
 		</div>
 	);
 };

@@ -1,0 +1,7 @@
+#logo {
+	position: fixed;
+	top: 2vh;
+	left: 2vh;
+	font-size: 2em;
+	color: rgb(255, 0, 0);
+}
