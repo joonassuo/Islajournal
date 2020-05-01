@@ -55,10 +55,8 @@ router.post("/", upload.array("file", 3), (req, res) => {
 		);
 	});
 
-	newPublication.save().then((publication) => {
-		res.json(publication);
-	});
-	//res.redirect("/api/upload");
+	newPublication.save();
+	res.redirect("/api/upload");
 });
 
 module.exports = router;

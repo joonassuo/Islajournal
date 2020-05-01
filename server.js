@@ -32,6 +32,7 @@ connection.once("open", () => {
 // ROUTES
 app.use("/api/upload", require("./routes/api/upload"));
 app.use("/api/images", require("./routes/api/images"));
+app.use("/api/publications", require("./routes/api/publications"));
 app.get("*", (req, res) => {
 	res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
 });

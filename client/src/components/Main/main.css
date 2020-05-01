@@ -5,3 +5,31 @@
 	font-size: 2em;
 	color: rgb(255, 0, 0);
 }
+
+.publication {
+	width: 250px;
+	height: 250px;
+}
+
+#pub-image {
+	position: absolute;
+	width: 100%;
+	height: auto;
+	opacity: 0;
+	top: 50%;
+	transform: translateY(-50%);
+	z-index: 2;
+}
+
+#pub-image:hover {
+	opacity: 1;
+}
+
+#pub-title {
+	color: rgb(0, 0, 255);
+	font-size: 2em;
+	text-align: center;
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+}
