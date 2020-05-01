@@ -2,17 +2,21 @@ const express = require("express");
 const mongoose = require("mongoose");
 const config = require("config");
 const path = require("path");
+const Grid = require("gridfs-stream");
+const methodOverride = require("method-override");
 const cors = require("cors");
 
 const app = express();
 app.use(cors());
+// app.use(methodOverride('_method'));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "client", "build")));
+app.set("view engine", "ejs");
 
 // CONNECT TO MDB
-const uri = config.get("MONGODB_URI");
+const mdbURI = config.get("MONGODB_URI");
 mongoose.set("useFindAndModify", false);
-mongoose.connect(uri, {
+mongoose.connect(mdbURI, {
 	useNewUrlParser: true,
 	useCreateIndex: true,
 	useUnifiedTopology: true,
@@ -20,10 +24,14 @@ mongoose.connect(uri, {
 const connection = mongoose.connection;
 connection.once("open", () => {
 	console.log("MDB connection established successfully");
+	// INIT GFS
+	gfs = Grid(connection.db, mongoose.mongo);
+	gfs.collection("uploads");
 });
 
 // ROUTES
-// add routes and connect to static build:
+app.use("/api/upload", require("./routes/api/upload"));
+app.use("/api/images", require("./routes/api/images"));
 app.get("*", (req, res) => {
 	res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
 });
