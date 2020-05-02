@@ -6,9 +6,15 @@ const Publication = (props) => {
 		top: props.coords.y + "%",
 		left: props.coords.x + "%",
 	};
+
 	return (
-		<div className="publication" style={style}>
-			<img src={props.p.pictures[0]} alt="test" id="pub-image" />
+		<div className="publication" id={props.p._id} style={style}>
+			<img
+				src={props.p.pictures[0]}
+				alt="test"
+				id="pub-image"
+				onClick={() => props.getPublication(props.p._id)}
+			/>
 			<div id="pub-title">{props.p.title}</div>
 		</div>
 	);

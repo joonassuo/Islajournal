@@ -14,4 +14,14 @@ router.get("/", (req, res) => {
 		.catch((err) => res.send(err));
 });
 
+// @route	GET api/publications/:id
+// @desc	Get a specific publication
+router.get("/:id", (req, res) => {
+	Publication.findOne({ _id: req.params.id })
+		.then((pub) => {
+			res.json(pub);
+		})
+		.catch((err) => res.send(err));
+});
+
 module.exports = router;

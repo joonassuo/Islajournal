@@ -39,7 +39,7 @@ router.get("/", (req, res) => {
 
 // @route   POST api/upload-publication
 // @desc    Upload new publication
-router.post("/", upload.array("file", 3), (req, res) => {
+router.post("/", upload.array("file", 5), (req, res) => {
 	const { creator, contactPerson, contactEmail, title } = req.body;
 	const newPublication = new Publication({
 		creator,

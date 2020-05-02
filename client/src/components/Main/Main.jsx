@@ -2,11 +2,14 @@ import React, { useState, useEffect } from "react";
 import "./main.css";
 import axios from "axios";
 import Publication from "./Publication";
+import PublicationView from "../PublicationView/PublicationView";
 
 const Main = () => {
 	const [publications, setPublications] = useState([]);
 	const [coords, setCoords] = useState([]);
 	const [isLoaded, setIsLoaded] = useState(false);
+	const [viewStory, setViewStory] = useState(false);
+	const [activePublication, setActivePublication] = useState({});
 
 	useEffect(() => {
 		axios.get("/api/publications").then((res) => {
@@ -30,8 +33,8 @@ const Main = () => {
 
 				for (let i = 0; i < coordsArray.length; i++) {
 					if (
-						Math.abs(coordsArray[i].x - coords.x) < 20 &&
-						Math.abs(coordsArray[i].y - coords.y < 20)
+						Math.abs(coordsArray[i].x - coords.x) < 10 &&
+						Math.abs(coordsArray[i].y - coords.y < 10)
 					) {
 						overlapping = true;
 						break;
@@ -48,17 +51,46 @@ const Main = () => {
 		});
 	}, []);
 
+	// GET PUBLICATION FROM DB WITH ID
+	const getPublication = (id) => {
+		axios
+			.get("/api/publications/" + id)
+			.then((res) => {
+				setActivePublication(res.data);
+				setViewStory(true);
+			})
+			.catch((err) => console.log(err));
+	};
+
 	return !isLoaded ? (
 		<div>LOADING</div>
+	) : viewStory ? (
+		<PublicationView p={activePublication} />
 	) : (
 		<div>
 			<div className="pub-container">
 				{publications.map((p, index) => {
-					return <Publication p={p} coords={coords[index]} />;
+					return (
+						<Publication
+							p={p}
+							coords={coords[index]}
+							getPublication={getPublication}
+						/>
+					);
 				})}
 			</div>
 			<div id="logo">ISLA Journal</div>
-			<button onClick={() => console.log(coords)}>asdasdasdasd</button>
+			<div className="links-container">
+				<div className="bottom-links" id="contributors">
+					Contributors
+				</div>
+				<div className="bottom-links" id="about">
+					About
+				</div>
+				<div className="bottom-links" id="contact">
+					Contact
+				</div>
+			</div>
 		</div>
 	);
 };
