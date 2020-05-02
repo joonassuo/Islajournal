@@ -4,6 +4,13 @@
 	background-color: rgb(255, 255, 255);
 }
 
+#back-button {
+	margin: 2em;
+	position: fixed;
+	top: 0;
+	left: 0;
+}
+
 #pview-title {
 	display: block;
 	margin: 5% 0 5% 40%;

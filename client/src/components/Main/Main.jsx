@@ -65,7 +65,7 @@ const Main = () => {
 	return !isLoaded ? (
 		<div>LOADING</div>
 	) : viewStory ? (
-		<PublicationView p={activePublication} />
+		<PublicationView p={activePublication} setView={setViewStory} />
 	) : (
 		<div>
 			<div className="pub-container">
