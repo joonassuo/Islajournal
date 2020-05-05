@@ -27,7 +27,7 @@ const Main = () => {
 			) {
 				coords = {
 					x: Math.random() * 70,
-					y: Math.random() * 70,
+					y: Math.random() * 60 + 10,
 				};
 				overlapping = false;
 
@@ -67,19 +67,11 @@ const Main = () => {
 	) : viewStory ? (
 		<PublicationView p={activePublication} setView={setViewStory} />
 	) : (
-		<div>
-			<div className="pub-container">
-				{publications.map((p, index) => {
-					return (
-						<Publication
-							p={p}
-							coords={coords[index]}
-							getPublication={getPublication}
-						/>
-					);
-				})}
+		<div className="mainPage">
+			<div id="logo-container">
+				<div id="logo-title">ISLA Journal</div>
+				<div id="logo-legend">issue two</div>
 			</div>
-			<div id="logo">ISLA Journal</div>
 			<div className="links-container">
 				<div className="bottom-links" id="contributors">
 					Contributors
@@ -90,6 +82,28 @@ const Main = () => {
 				<div className="bottom-links" id="contact">
 					Contact
 				</div>
+			</div>
+			{publications.map((p, index) => {
+				return (
+					<Publication
+						p={p}
+						coords={coords[index]}
+						getPublication={getPublication}
+					/>
+				);
+			})}
+			<div className="info-container">
+				<div id="info-title">Isla WHO?</div>
+				<div id="info-text">
+					ISLA Journal (Ongoing Perceptions of Womanhood) is a fashion
+					zine by photographer Aya Brace and stylist Sanna Silander
+					founded in 2019.
+					<br />
+					<br />
+					For issue two we created a website and invited contributors
+					to continue to discuss perceptions through the theme HOME.
+				</div>
+				<div id="info-copyright">Copyright 2020 ISLA Journal</div>
 			</div>
 		</div>
 	);

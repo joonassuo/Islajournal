@@ -1,6 +1,10 @@
 .frontpage {
 	width: 100vw;
 	height: 100vh;
+	border: 15px solid rgb(159, 201, 161);
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 .title-container,
@@ -19,6 +23,6 @@
 
 #title {
 	position: absolute;
-	color: red;
-	font-size: 3em;
+	color: rgb(241, 92, 65);
+	font-size: 4em;
 }

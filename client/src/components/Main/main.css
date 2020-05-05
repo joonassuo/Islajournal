@@ -1,9 +1,30 @@
-#logo {
+.mainPage {
+	position: relative;
+	border: 15px solid rgb(159, 201, 161);
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	width: 100vw;
+	height: 150vh;
+}
+
+#logo-container {
 	position: fixed;
-	top: 2vh;
-	left: 2vh;
-	font-size: 2em;
-	color: rgb(255, 0, 0);
+	top: 3em;
+	left: 4em;
+}
+
+#logo-title,
+#logo-legend {
+	color: rgb(241, 92, 65);
+}
+
+#logo-title {
+	font-size: 2.5em;
+}
+
+#logo-legend {
+	margin: 0;
 }
 
 .publication {
@@ -26,8 +47,8 @@
 }
 
 #pub-title {
-	color: rgb(0, 0, 255);
-	font-size: 1.5em;
+	color: rgb(140, 167, 183);
+	font-size: 1em;
 	text-align: center;
 	position: relative;
 	top: 50%;
@@ -35,16 +56,47 @@
 }
 
 .links-container {
-	position: absolute;
-	bottom: 2em;
-	left: 50%;
-	transform: translateX(-50%);
+	position: fixed;
+	top: 4em;
+	right: 2em;
 	text-align: center;
 }
 
 .bottom-links {
-	color: rgb(0, 255, 0);
-	font-size: 1.5em;
+	color: rgb(212, 182, 255);
+	font-size: 1em;
 	display: inline;
-	margin: 2em;
+	margin: 1em;
+}
+
+.info-container {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: auto;
+	background-color: rgb(254, 224, 173);
+}
+
+#info-title,
+#info-text {
+	margin: 1rem;
+	color: rgb(195, 155, 255);
+}
+
+#info-title {
+	font-size: 2.5em;
+}
+
+#info-text {
+	width: 20%;
+	font-size: 0.8rem;
+	margin-top: 1rem;
+}
+
+#info-copyright {
+	color: rgb(140, 167, 183);
+	font-size: 0.8rem;
+	width: 98%;
+	text-align: right;
+	margin-bottom: 2rem;
 }
