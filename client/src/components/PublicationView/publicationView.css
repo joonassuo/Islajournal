@@ -1,17 +1,35 @@
 .publication-view {
-	width: 100vw;
-	height: 100vh;
-	background-color: rgb(255, 255, 255);
+	width: 100%;
+	min-height: 100vh;
 }
 
-#back-button {
-	margin: 2em;
-	position: fixed;
-	top: 0;
-	left: 0;
+.pview-title-container {
+	width: 100%;
+	text-align: center;
+	margin: 4rem 0 4rem 0;
+}
+
+#pview-creator {
+	font-size: 1.5rem;
+	color: rgb(140, 167, 183);
 }
 
 #pview-title {
-	display: block;
-	margin: 5% 0 5% 40%;
+	color: rgb(140, 167, 183);
+}
+
+.pview-content-container {
+	width: 50%;
+	height: auto;
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.pview-image {
+	display: inline-block;
+	width: 40%;
+	height: auto;
+	margin: 5%;
+	vertical-align: middle;
 }

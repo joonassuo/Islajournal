@@ -2,37 +2,36 @@ import React from "react";
 import "./publicationView.css";
 
 const PublicationView = (props) => {
-	const backButton = "<-- BACK";
 	const getStyle = () => {
 		return {
-			left: 5 + Math.random() * 50,
-			bottom: 6 + Math.random() * 20,
+			left: Math.random() * 30,
+			bottom: Math.random() * 30,
 		};
 	};
 
 	return (
 		<div className="publication-view">
-			<div id="back-button" onClick={() => props.setView(false)}>
-				{backButton}
+			<div className="pview-title-container">
+				<div id="pview-creator">{props.p.creator}</div>
+				<div id="pview-title">{props.p.title}</div>
 			</div>
-			<div id="pview-title">{props.p.title}</div>
-			{props.p.pictures.map((pic, index) => {
-				let random = getStyle();
-				return (
-					<img
-						src={pic}
-						id={"pview-image" + index}
-						className="pview-image"
-						alt="shit"
-						style={{
-							display: "block",
-							height: "40vh",
-							"margin-left": random.left + "%",
-							"margin-bottom": random.bottom + "em",
-						}}
-					/>
-				);
-			})}
+			<div className="pview-content-container">
+				{props.p.pictures.map((pic, index) => {
+					let random = getStyle();
+					return (
+						<img
+							src={pic}
+							id={"pview-image" + index}
+							className="pview-image"
+							alt="shit"
+							/* style={{
+								"margin-left": random.left + "%",
+								"margin-bottom": random.bottom + "%",
+							}} */
+						/>
+					);
+				})}
+			</div>
 		</div>
 	);
 };

@@ -1,17 +1,21 @@
-.mainPage {
+.main-page {
 	position: relative;
 	border: 15px solid rgb(159, 201, 161);
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
-	width: 100vw;
+}
+
+.main-content {
+	width: 100%;
 	height: 150vh;
 }
 
+/* TOP OF PAGE */
+.top-container {
+	position: relative;
+}
+
 #logo-container {
-	position: fixed;
-	top: 3em;
-	left: 4em;
+	display: inline-block;
+	margin: 3rem;
 }
 
 #logo-title,
@@ -21,10 +25,66 @@
 
 #logo-title {
 	font-size: 2.5em;
+	cursor: pointer;
 }
 
 #logo-legend {
 	margin: 0;
+}
+
+.links-container {
+	display: inline-block;
+	position: absolute;
+	right: 0;
+	height: 100%;
+	padding-right: 3rem;
+}
+
+.links {
+	color: rgb(212, 182, 255);
+	font-size: 1em;
+	display: inline;
+	margin: 1em;
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+	cursor: pointer;
+}
+
+/* CONTRIBUTORS, ABOUT */
+.contributors-container,
+.about-container {
+	color: rgb(212, 182, 255);
+	min-height: 100vh;
+}
+
+#contributors-title,
+#about-title {
+	width: 100%;
+	text-align: center;
+	margin-bottom: 3rem;
+}
+
+#about-text,
+#contributors-list {
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+#contributors-list {
+	width: 20%;
+}
+
+#about-text {
+	width: 40%;
+}
+
+/* PUBLICATIONS */
+.publications-container {
+	position: relative;
+	width: 100%;
+	height: 150vh;
 }
 
 .publication {
@@ -33,13 +93,11 @@
 }
 
 #pub-image {
-	position: absolute;
-	width: 100%;
-	height: auto;
+	width: auto;
+	height: 100%;
 	opacity: 0;
-	top: 50%;
-	transform: translateY(-50%);
 	z-index: 2;
+	cursor: pointer;
 }
 
 #pub-image:hover {
@@ -50,25 +108,13 @@
 	color: rgb(140, 167, 183);
 	font-size: 1em;
 	text-align: center;
-	position: relative;
+	position: absolute;
 	top: 50%;
-	transform: translateY(-50%);
+	width: 100%;
+	z-index: -1;
 }
 
-.links-container {
-	position: fixed;
-	top: 4em;
-	right: 2em;
-	text-align: center;
-}
-
-.bottom-links {
-	color: rgb(212, 182, 255);
-	font-size: 1em;
-	display: inline;
-	margin: 1em;
-}
-
+/* INFO CONTAINER */
 .info-container {
 	position: absolute;
 	bottom: 0;
@@ -79,16 +125,17 @@
 
 #info-title,
 #info-text {
-	margin: 1rem;
+	margin: 1rem 0 1rem 3rem;
 	color: rgb(195, 155, 255);
 }
 
 #info-title {
+	margin-top: 2rem;
 	font-size: 2.5em;
 }
 
 #info-text {
-	width: 20%;
+	width: 15rem;
 	font-size: 0.8rem;
 	margin-top: 1rem;
 }
