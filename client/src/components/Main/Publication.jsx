@@ -15,6 +15,7 @@ const Publication = (props) => {
 				id="pub-image"
 				onClick={() => props.getPublication(props.p._id)}
 			/>
+			<div id="pub-creator">{props.p.creator}</div>
 			<div id="pub-title">{props.p.title}</div>
 		</div>
 	);
