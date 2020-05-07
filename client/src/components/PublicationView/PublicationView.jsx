@@ -2,13 +2,6 @@ import React from "react";
 import "./publicationView.css";
 
 const PublicationView = (props) => {
-	const getStyle = () => {
-		return {
-			left: Math.random() * 30,
-			bottom: Math.random() * 30,
-		};
-	};
-
 	return (
 		<div className="publication-view">
 			<div className="pview-title-container">
@@ -17,17 +10,12 @@ const PublicationView = (props) => {
 			</div>
 			<div className="pview-content-container">
 				{props.p.pictures.map((pic, index) => {
-					let random = getStyle();
 					return (
 						<img
 							src={pic}
 							id={"pview-image" + index}
 							className="pview-image"
-							alt="shit"
-							/* style={{
-								"margin-left": random.left + "%",
-								"margin-bottom": random.bottom + "%",
-							}} */
+							alt="pview"
 						/>
 					);
 				})}

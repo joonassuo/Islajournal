@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from "react";
+import Fade from "react-reveal/Fade";
 import "./main.css";
 import axios from "axios";
 import Publication from "./Publication";
 import PublicationView from "../PublicationView/PublicationView";
+import Loading from "../Loading/Loading";
 
 const Main = () => {
 	const [publications, setPublications] = useState([]);
 	const [coords, setCoords] = useState([]);
-	const [isLoaded, setIsLoaded] = useState(false);
+	const [isLoading, setIsLoading] = useState(false);
+	const [isReady, setIsReady] = useState(false);
 	const [viewStory, setViewStory] = useState(false);
 	const [viewContributors, setViewContributors] = useState(false);
 	const [viewAbout, setViewAbout] = useState(false);
@@ -50,7 +53,7 @@ const Main = () => {
 				counter++;
 			}
 			setCoords(coordsArray);
-			setIsLoaded(true);
+			setIsReady(true);
 		});
 	}, []);
 
@@ -59,9 +62,23 @@ const Main = () => {
 		axios
 			.get("/api/publications/" + id)
 			.then((res) => {
-				setActivePublication(res.data);
-				setViewStory(true);
+				setIsLoading(true);
+				return res.data;
 			})
+			/* .then((res) => {
+				const timeout = () => {
+					return new Promise(function (resolve, reject) {
+						setTimeout(() => {
+							resolve(setIsLoading(false));
+						}, 900);
+					});
+				};
+
+				timeout().then(() => {
+					setActivePublication(res);
+					setViewStory(true);
+				});
+			}) */
 			.catch((err) => console.log(err));
 	};
 
@@ -104,10 +121,11 @@ const Main = () => {
 		}
 	};
 
-	return !isLoaded ? (
-		<div>LOADING</div>
-	) : (
+	return !isReady ? null : (
 		<div className="main-page">
+			<Fade when={isLoading}>
+				<Loading />
+			</Fade>
 			<div className="top-container">
 				<div id="logo-container">
 					<div id="logo-title" onClick={() => togglePage("home")}>
@@ -138,6 +156,7 @@ const Main = () => {
 						Contact
 					</div>
 				</div>
+				<div className="hamburger-container"></div>
 			</div>
 			{viewStory ? (
 				<PublicationView p={activePublication} setView={setViewStory} />
